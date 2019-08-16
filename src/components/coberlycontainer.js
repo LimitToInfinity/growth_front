@@ -1,32 +1,65 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Coberly from './coberly';
+import kyle_headshot from "./../images/kyle_headshot.jpg"
+import kyle_music from "./../images/kyle_music.jpg"
+import kyle_paint from "./../images/kyle_paint.jpeg"
+import kyle_sitting from "./../images/kyle_sitting.jpg"
 
-function CoberlyContainer() {
+export default class CoberlyContainer extends Component {
 
-    const imagesDictionary = {
-        "1": "./../../public/images/kyle_headshot",
-        "2": "./../../public/images/kyle_music",
-        "3": "./../../public/images/kyle_paint",
-        "4": "./../../public/images/kyle_sitting",
-        "5": "./../../public/images/kyle_paint",
-        "6": "./../../public/images/kyle_music",
-        "7": "./../../public/images/kyle_sitting",
-        "8": "./../../public/images/kyle_paint",
-        "9": "./../../public/images/kyle_headshot",
+    imagesDictionary = {
+        "1": kyle_headshot,
+        "2": kyle_music,
+        "3": kyle_paint,
+        "4": kyle_sitting,
+        "5": kyle_paint,
+        "6": kyle_headshot,
+        "7": kyle_paint,
+        "8": kyle_sitting,
+        "9": kyle_music,
     }
 
-    const imagesArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    imagesArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-    // imagesArray.map(number => {
-        
-    // })
+    componentDidMount() {
+        const allImages = document.querySelectorAll(".coberly")
 
-    return (
-    <div className="coberly-container">
-        <div className="coberly-image">
-            <img alt="coberly" src="" />
+        gameTime()
+
+        function gameTime() {
+            setInterval(displayImage, 500)
+        }
+
+        function displayImage() {
+            const randomNumber = `${Math.floor(Math.random() * 9)}`
+            const imageDiv = allImages[randomNumber]
+            imageDiv.classList.add("open")
+            
+            setTimeout(removeDisplay, 1000)
+
+            function removeDisplay (){
+                imageDiv.classList.remove("open")
+            }
+        }
+    }
+
+    render(){
+
+        const displayImages = () => {
+            return this.imagesArray.map(number => {
+                return <Coberly 
+                    key={number}
+                    id={number - 1}
+                    image={this.imagesDictionary[number]}
+                    addPoint={this.props.addPoint}
+                />
+            })
+        }
+    
+        return (
+        <div className="coberly-container">
+            {displayImages()}
         </div>
-    </div>
-    );
+        );
+    }
 }
-
-export default CoberlyContainer;

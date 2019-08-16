@@ -1,5 +1,43 @@
 .coberly-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: auto;
+  background-color: black;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.coberly {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+  display: none;
+}
+
+.coberly-div {
+  width: 350px;
+  height: 350px;
+}
+
+.coberly img {
+  width: 300px;
+  height: 300px;
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-around;
+  color: whitesmoke;
+  background-color: black;
+  text-align: center;
+  padding: 3%;
+}
+
+.open {
+  display: block;
+}
+
+.you-win {
+  text-align: center;
 }
