@@ -9,28 +9,30 @@ class App extends Component {
     points: 0,
   }
 
-  // checkStatus = () => {
-  //   if (this.state.points === 10) {
-  //     console.log("you win")
-  //   }
-  // }
 
   addPoint = () => {
     this.setState({ points: this.state.points + 1})
   }
 
-  render() {
+  playAgain = () => {
+    this.setState( { points: 0 })
+  }
 
-    // this.checkStatus()
+
+  render() {
 
     return (
       <div className="app">
         <HeaderBar points={this.state.points} seconds={this.state.seconds}/>
-        {this.state.points === 10 ? <YouWin /> : null}
-        <CoberlyContainer 
-          points={this.state.points}
-          addPoint={this.addPoint}
-        />
+        {this.state.points < 1 
+        ?<CoberlyContainer 
+            points={this.state.points}
+            addPoint={this.addPoint}
+          />
+        : <YouWin 
+            playAgain={this.playAgain}
+          />}
+        
       </div>
     );
   }
