@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Coberly from './coberly';
-import kyle_headshot from "./../images/kyle_headshot.jpg"
-import kyle_music from "./../images/kyle_music.jpg"
-import kyle_paint from "./../images/kyle_paint.jpeg"
-import kyle_sitting from "./../images/kyle_sitting.jpg"
+import kyle_headshot from "./../images/kyle_headshot.jpg";
+import kyle_music from "./../images/kyle_music.jpg";
+import kyle_paint from "./../images/kyle_paint.jpeg";
+import kyle_sitting from "./../images/kyle_sitting.jpg";
 
 export default class CoberlyContainer extends Component {
 
@@ -22,23 +22,30 @@ export default class CoberlyContainer extends Component {
     imagesArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
     componentDidMount() {
-        const allImages = document.querySelectorAll(".coberly")
+        const allImages = document.querySelectorAll(".coberly");
 
-        gameTime()
+        gameTime();
 
         function gameTime() {
-            setInterval(displayImage, 500)
+            setInterval(displayImage, 500);
         }
 
         function displayImage() {
-            const randomNumber = `${Math.floor(Math.random() * 9)}`
-            const imageDiv = allImages[randomNumber]
-            imageDiv.classList.add("open")
-            
-            setTimeout(removeDisplay, 1000)
+            const randomNumber = `${Math.floor(Math.random() * 9)}`;
+            let previousRandomNumber = 9;
 
-            function removeDisplay (){
-                imageDiv.classList.remove("open")
+            if (randomNumber !== previousRandomNumber) {
+                setTimeout(removeDisplay, 1000);
+                const imageDiv = allImages[randomNumber];
+                imageDiv.classList.add("open");
+                
+                previousRandomNumber = randomNumber
+
+                function removeDisplay (){
+                    imageDiv.classList.remove("open");
+                }
+            } else {
+                displayImage();
             }
         }
     }
@@ -50,10 +57,10 @@ export default class CoberlyContainer extends Component {
                 return <Coberly 
                     key={number}
                     id={number - 1}
-                    image={this.imagesDictionary[number]}
+                    image={this.imagesDictionary[`${number}`]}
                     addPoint={this.props.addPoint}
                 />
-            })
+            });
         }
     
         return (

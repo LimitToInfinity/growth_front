@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default function Coberly(props) {
+export default class Coberly extends Component {
+    
+    render() {
+        const { addPoint, id, image } = this.props;
+        
+        const handleClick = () => {
+            const coberly = document.getElementById(`${id}`);
+            coberly.classList.remove("open")
 
-    const { id, addPoint } = props;
-
-    const handleClick = (event) => {
-        addPoint();
-    }
-
-    return(
-        <div className="coberly-div">
+            addPoint();
+        }
+        
+        return(
             <div id={id} onClick={handleClick} className="coberly">
-                <img alt="coberly" src={props.image} />
+                <img alt="coberly" src={image} />
             </div>
-        </div>
-    );
+        );
+    }
 }

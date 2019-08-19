@@ -3,13 +3,11 @@ import kyle_goofball from "./../images/kyle_goofball.png";
 
 export default function YouWin(props) {
     
-    const kyleGoofball = `${kyle_goofball}`;
-
     return(
         <div className="you-win">
-            <h1>You Whacked that Coberly!!!</h1>
-            <img alt="goofball coberly" src={kyleGoofball} />
-            <button onClick={() => props.playAgain()}>Play Again! </button>
+            <h3>You Whacked that Coberly!!!</h3>
+            <img className="goofball-coberly" alt="goofball coberly" src={kyle_goofball} />
+            <button className="play-again" onClick={() => props.play()}>Play Again!</button>
         </div>
     );
 } 

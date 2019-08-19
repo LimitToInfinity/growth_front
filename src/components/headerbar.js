@@ -5,6 +5,7 @@ export default function HeaderBar(props) {
         <header className="header-bar">
             <h1>Whack A Coberly</h1>
             <h2>Points: {props.points}</h2>
+            <h2>Seconds: {props.seconds}</h2>
         </header>
     )
 } 
