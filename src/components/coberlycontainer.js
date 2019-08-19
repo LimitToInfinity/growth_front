@@ -57,9 +57,9 @@ export default class CoberlyContainer extends Component {
         }
     
         return (
-        <div className="coberly-container">
-            {displayImages()}
-        </div>
+            <div className="coberly-container">
+                {displayImages()}
+            </div>
         );
     }
 }

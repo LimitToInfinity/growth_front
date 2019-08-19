@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function Coberly(props) {
 
-    const { id, addPoint } = props
+    const { id, addPoint } = props;
 
     const handleClick = (event) => {
-        addPoint()
+        addPoint();
     }
 
     return(
@@ -14,5 +14,5 @@ export default function Coberly(props) {
                 <img alt="coberly" src={props.image} />
             </div>
         </div>
-    )
+    );
 }
