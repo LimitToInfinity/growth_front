@@ -42,7 +42,7 @@ export default class App extends Component {
           <Play play={this.play} />
         </div>
       );
-    } else if (seconds >= 10 && points < 10) {
+    } else if (seconds >= 15 && points < 10) {
       this.stopTimer();
       return (
         <div className="app">
@@ -57,7 +57,7 @@ export default class App extends Component {
           <CoberlyContainer points={points} addPoint={this.addPoint} />
         </div>
       );
-    } else if (seconds < 10 && points >= 10) {
+    } else if (seconds < 15 && points >= 10) {
       this.stopTimer();
       return (
         <div className="app">
