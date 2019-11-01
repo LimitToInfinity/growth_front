@@ -21,6 +21,8 @@ export default class App extends Component {
     this.startTimer();
   }
 
+ 
+
   interval = null
   startTimer = () => {
     this.setState({ seconds: 0, });
@@ -31,40 +33,20 @@ export default class App extends Component {
   stopTimer = () => {
     clearInterval(this.interval);
   }
+  
 
   render() {
     const { points, seconds } = this.state;
-
-    if (seconds === -1) {
-      return (
-        <div className="app">
-          <HeaderBar points={points} seconds={0} />
-          <Play play={this.play} />
-        </div>
-      );
-    } else if (seconds >= 15 && points < 10) {
-      this.stopTimer();
       return (
         <div className="app">
           <HeaderBar points={points} seconds={seconds} />
-          <YouLose play={this.play} />
+          <Play play={this.play} seconds={seconds} />
+          <YouLose play={this.play} seconds={seconds} points={points} stopTimer={this.stopTimer}  />
+          {(seconds < 1 && seconds > -1 && points < 10)
+            ?  <CoberlyContainer addPoint={this.addPoint} seconds={seconds} points={points} />
+            :   null}
+          <YouWin play={this.play} seconds={seconds} points={points} stopTimer={this.stopTimer} />
         </div>
       );
-    } else if (seconds > -1 && points < 10) {
-      return (
-        <div className="app">
-          <HeaderBar points={points} seconds={seconds}/>
-          <CoberlyContainer points={points} addPoint={this.addPoint} />
-        </div>
-      );
-    } else if (seconds < 15 && points >= 10) {
-      this.stopTimer();
-      return (
-        <div className="app">
-          <HeaderBar points={points} seconds={seconds}/>
-          <YouWin play={this.play} />
-        </div>
-      );
-    }
   }
 }

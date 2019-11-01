@@ -50,8 +50,12 @@ export default class CoberlyContainer extends Component {
         }
     }
 
-    render(){
+    componentWillUnmount() {
+        return null
+    }
 
+    render(){
+        const { points, seconds } = this.props
         const displayImages = () => {
             return this.imagesArray.map(number => {
                 return <Coberly 
