@@ -6,17 +6,21 @@ import YouWin from "./youwin";
 import CoberlyContainer from "./coberlycontainer";
 
 export default function Main(props) {
-    const { seconds, points, play, stopTimer, addPoint } = props;
+    const { seconds, points, playing, play, stopGame, addPoint } = props;
     
-    if (seconds === 16) {
-        return <Play play={ play } />;
-    } else if (seconds === 1) {
-        return <YouLose play={ play } stopTimer={ stopTimer } />;
+    if (seconds === 0) {
+        stopGameCheck();
+        return <YouLose play={ play } />;
     } else if (points === 10) {
-        return <YouWin play={ play } stopTimer={ stopTimer } />;
-    } else if (seconds < 16 && seconds > 1) {
+        stopGameCheck();
+        return <YouWin play={ play } />;
+    } else if (playing) {
         return <CoberlyContainer addPoint={ addPoint } />;
     } else {
-        return null;
+        return <Play play={ play } />;
+    }
+
+    function stopGameCheck() {
+        if (playing) { stopGame(); }
     }
 }

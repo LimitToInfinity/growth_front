@@ -8,12 +8,13 @@ import './../stylesheets/App.css';
 export default class App extends Component {
   state = {
     points: 0,
-    seconds: 16,
+    seconds: 15,
+    playing: false,
     timer: null
   };
 
   play = () => {
-    this.setState({ points: 0, seconds: 15 });
+    this.setState({ points: 0, seconds: 15, playing: true });
     this.startTimer();
   }
 
@@ -25,7 +26,8 @@ export default class App extends Component {
     this.setState({ seconds: this.state.seconds - 1 });
   }
 
-  stopTimer = () => {
+  stopGame = () => {
+    this.setState({ playing: false });
     clearInterval( this.state.timer );
   }
 
@@ -34,7 +36,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { points, seconds } = this.state;
+    const { points, seconds, playing } = this.state;
     
     return (
       <div className="app">
@@ -43,8 +45,9 @@ export default class App extends Component {
         <Main
           seconds={ seconds }
           points={ points }
+          playing={ playing }
           play={ this.play }
-          stopTimer={ this.stopTimer }
+          stopGame={ this.stopGame }
           addPoint={ this.addPoint }
         />
       </div>

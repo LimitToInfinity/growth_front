@@ -1,10 +1,8 @@
 import React from 'react';
 import kyle_goofball from "./../images/kyle_goofball.png";
 
-export default function YouWin({ play, stopTimer }) {
+export default function YouWin({ play }) {
         
-    stopTimer();
-
     return(
         <div className="you-win">
             <h3>You Whacked that Coberly!!!</h3>

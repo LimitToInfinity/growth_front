@@ -16,15 +16,15 @@ export default class CoberlyContainer extends Component {
     }
 
     imagesDictionary = {
-        "1": kyle_headshot,
-        "2": kyle_music,
-        "3": kyle_paint,
-        "4": kyle_sitting,
-        "5": kyle_paint,
-        "6": kyle_headshot,
-        "7": kyle_paint,
-        "8": kyle_sitting,
-        "9": kyle_music,
+        "0": kyle_headshot,
+        "1": kyle_music,
+        "2": kyle_paint,
+        "3": kyle_sitting,
+        "4": kyle_paint,
+        "5": kyle_headshot,
+        "6": kyle_paint,
+        "7": kyle_sitting,
+        "8": kyle_music,
     };
 
     componentDidMount() {
@@ -69,7 +69,7 @@ export default class CoberlyContainer extends Component {
         return Object.keys(imagesDictionary).map(number => {
             return <Coberly 
                 key={ number }
-                id={ number - 1 }
+                id={ number }
                 image={ imagesDictionary[`${number}`] }
                 addPoint={ addPoint }
             />

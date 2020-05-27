@@ -2,9 +2,7 @@ import React from 'react';
 
 import game_over from "./../images/game_over.jpg";
 
-export default function YouLose({ play, stopTimer }) {
-    
-    stopTimer();
+export default function YouLose({ play }) {
     
     return(
         <div className="you-lose">
